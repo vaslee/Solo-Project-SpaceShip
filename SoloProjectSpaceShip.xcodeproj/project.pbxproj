@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9003BC8C220B937300D571C6 /* bulletsSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9003BC8A220B937200D571C6 /* bulletsSound.wav */; };
 		9003BC8D220B937300D571C6 /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9003BC8B220B937300D571C6 /* explosion.wav */; };
+		9003BCCB220CDAF400D571C6 /* spaceinvaders1.mpeg in Resources */ = {isa = PBXBuildFile; fileRef = 9003BCCA220CDAF400D571C6 /* spaceinvaders1.mpeg */; };
+		9003BCCF220CE57700D571C6 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9003BCCE220CE57700D571C6 /* MenuScene.swift */; };
 		90090BE8220A0A34003EF67C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90090BE7220A0A34003EF67C /* AppDelegate.swift */; };
 		90090BEA220A0A34003EF67C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 90090BE9220A0A34003EF67C /* GameScene.sks */; };
 		90090BEC220A0A34003EF67C /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 90090BEB220A0A34003EF67C /* Actions.sks */; };
@@ -22,6 +24,8 @@
 /* Begin PBXFileReference section */
 		9003BC8A220B937200D571C6 /* bulletsSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bulletsSound.wav; sourceTree = "<group>"; };
 		9003BC8B220B937300D571C6 /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
+		9003BCCA220CDAF400D571C6 /* spaceinvaders1.mpeg */ = {isa = PBXFileReference; lastKnownFileType = video.mpeg; path = spaceinvaders1.mpeg; sourceTree = "<group>"; };
+		9003BCCE220CE57700D571C6 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		90090BE4220A0A34003EF67C /* SoloProjectSpaceShip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoloProjectSpaceShip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90090BE7220A0A34003EF67C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90090BE9220A0A34003EF67C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -68,9 +72,11 @@
 				90090BE9220A0A34003EF67C /* GameScene.sks */,
 				90090BEB220A0A34003EF67C /* Actions.sks */,
 				90090BED220A0A34003EF67C /* GameScene.swift */,
+				9003BCCE220CE57700D571C6 /* MenuScene.swift */,
 				90090BEF220A0A34003EF67C /* GameViewController.swift */,
 				90090BF1220A0A34003EF67C /* Main.storyboard */,
 				9003BC8A220B937200D571C6 /* bulletsSound.wav */,
+				9003BCCA220CDAF400D571C6 /* spaceinvaders1.mpeg */,
 				9003BC8B220B937300D571C6 /* explosion.wav */,
 				90090BF4220A0A35003EF67C /* Assets.xcassets */,
 				90090BF6220A0A35003EF67C /* LaunchScreen.storyboard */,
@@ -140,6 +146,7 @@
 				90090BF3220A0A34003EF67C /* Main.storyboard in Resources */,
 				90090BEA220A0A34003EF67C /* GameScene.sks in Resources */,
 				9003BC8D220B937300D571C6 /* explosion.wav in Resources */,
+				9003BCCB220CDAF400D571C6 /* spaceinvaders1.mpeg in Resources */,
 				9003BC8C220B937300D571C6 /* bulletsSound.wav in Resources */,
 				90090BF5220A0A35003EF67C /* Assets.xcassets in Resources */,
 				90090BF8220A0A35003EF67C /* LaunchScreen.storyboard in Resources */,
@@ -155,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90090BEE220A0A34003EF67C /* GameScene.swift in Sources */,
+				9003BCCF220CE57700D571C6 /* MenuScene.swift in Sources */,
 				90090BF0220A0A34003EF67C /* GameViewController.swift in Sources */,
 				90090BE8220A0A34003EF67C /* AppDelegate.swift in Sources */,
 			);
