@@ -1,21 +1,25 @@
 # SpaceShip
-This is the the favorite game I was pley when I was little. And as become as soft engineer, I like to make this little game for my own. I research a lot of resources online. Hoping this will helps people who likes to start learning SpriteKit.
+Since my childhood spaceship was my most played and favorite game. As a soft engineer, I would like to make one for my own. Hoping my app will also be a help to people who are new to SpriteKit.
 
 ## Getting Started
-This game is base on the SpriteKit and Programmatic to set up the game. And there some functions set up easy way for beginners to get undersantd better about what to call in each function.
+SpriteKit is the tool used to call the Kits to start code. The game has a ProgrammaticUI setup. SpriteKit has functions that make it easy to understand how to implement the structure of your game.
 
-
-### Prerequisites
-All you need to do is download the Xcode, and make sure its set up on Swift Language. (As you keep go on to this game, you may need to download some resources for UI/UX needs.)
-
-### Start Code
+## Overview
 As you open the project, you will see some of files list on the left side, and one of the file named "GameScene". At this project that I created is not need for GameScene because I doing entire game by using programmtic UI. So I start create 3 swift files call : GameScene, MeueScene, and EndScene.
 
 As the name of the file, GameScene is what we code for the most part of the game, I added my ship, enemy ship, bullte, etc. And MeueScene, is the first scene that user will see when they enter/run the game, this is optional only for people who wants their game to be more better and options. I will add some button and labels to be welcome for user to start the game. EndScene, will be the last scene when user is win or lose. This scene will able to show the user's ceurrent score. 
 
+## Prerequisites
+* Xcode - 9.0+, set up on Swift Language
+* iOS 8.0+ / Mac OS X 10.11+ / tvOS 9.0+
+* Swift 4.0+
 
-## Running the tests
-User can clone this game to their equipment or connect to their own iphone devise and test run.
+## Features
+* Adding the diffecult levels, so user is able to selected before they start the game
+* Setting up unlock options for the ships. 
+* Able to save the user record
+* Search for the nearby players
+* Connect to other players
 
 ## Built With
 * SpriteKitc - to get access to call all the game kit
