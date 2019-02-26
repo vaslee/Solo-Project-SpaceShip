@@ -1,4 +1,4 @@
-# Solo-Project-SpaceShip
+# SpaceShip
 This is the the favorite game I was pley when I was little. And as become as soft engineer, I like to make this little game for my own. I research a lot of resources online. Hoping this will helps people who likes to start learning SpriteKit.
 
 ## Getting Started
