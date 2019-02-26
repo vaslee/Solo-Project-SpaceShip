@@ -5,7 +5,7 @@ Since my childhood spaceship was my most played and favorite game. As a soft eng
 SpriteKit is the tool used to call the Kits to start code. The game has a ProgrammaticUI setup. SpriteKit has functions that make it easy to understand how to implement the structure of your game.
 
 ## Overview
-As you open the project, you will see some of files list on the left side, and one of the file named "GameScene". At this project that I created is not need for GameScene because I doing entire game by using programmtic UI. So I start create 3 swift files call : GameScene, MeueScene, and EndScene.
+At this project that I created is not need for GameScene because I doing entire game by using ProgrammticUI. So I start create 3 swift files call : GameScene, MeueScene, and EndScene.
 
 As the name of the file, GameScene is what we code for the most part of the game, I added my ship, enemy ship, bullte, etc. And MeueScene, is the first scene that user will see when they enter/run the game, this is optional only for people who wants their game to be more better and options. I will add some button and labels to be welcome for user to start the game. EndScene, will be the last scene when user is win or lose. This scene will able to show the user's ceurrent score. 
 
