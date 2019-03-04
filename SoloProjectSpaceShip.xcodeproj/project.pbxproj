@@ -20,6 +20,8 @@
 		90090BF5220A0A35003EF67C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90090BF4220A0A35003EF67C /* Assets.xcassets */; };
 		90090BF8220A0A35003EF67C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90090BF6220A0A35003EF67C /* LaunchScreen.storyboard */; };
 		9036256B222482F600A5727C /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9036256A222482F600A5727C /* EndScene.swift */; };
+		905EBCA822284EF400A81305 /* EndScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 905EBCA722284EF400A81305 /* EndScene.sks */; };
+		905EBCAA22284F8E00A81305 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 905EBCA922284F8E00A81305 /* MenuScene.sks */; };
 		90FD8DB82215EF29001EBE1A /* PG_Roof Runners.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90FD8DB72215EF29001EBE1A /* PG_Roof Runners.ttf */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		90090BF7220A0A35003EF67C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90090BF9220A0A35003EF67C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9036256A222482F600A5727C /* EndScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
+		905EBCA722284EF400A81305 /* EndScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndScene.sks; sourceTree = "<group>"; };
+		905EBCA922284F8E00A81305 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		90FD8DB72215EF29001EBE1A /* PG_Roof Runners.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PG_Roof Runners.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,12 +77,14 @@
 			isa = PBXGroup;
 			children = (
 				90090BE7220A0A34003EF67C /* AppDelegate.swift */,
+				905EBCA922284F8E00A81305 /* MenuScene.sks */,
 				90090BE9220A0A34003EF67C /* GameScene.sks */,
+				905EBCA722284EF400A81305 /* EndScene.sks */,
 				90090BEB220A0A34003EF67C /* Actions.sks */,
-				90090BED220A0A34003EF67C /* GameScene.swift */,
-				9003BCCE220CE57700D571C6 /* MenuScene.swift */,
-				9036256A222482F600A5727C /* EndScene.swift */,
 				90090BEF220A0A34003EF67C /* GameViewController.swift */,
+				9003BCCE220CE57700D571C6 /* MenuScene.swift */,
+				90090BED220A0A34003EF67C /* GameScene.swift */,
+				9036256A222482F600A5727C /* EndScene.swift */,
 				90090BF1220A0A34003EF67C /* Main.storyboard */,
 				9003BC8A220B937200D571C6 /* bulletsSound.wav */,
 				9003BCCA220CDAF400D571C6 /* spaceinvaders1.mpeg */,
@@ -153,9 +159,11 @@
 				90090BEA220A0A34003EF67C /* GameScene.sks in Resources */,
 				9003BC8D220B937300D571C6 /* explosion.wav in Resources */,
 				90FD8DB82215EF29001EBE1A /* PG_Roof Runners.ttf in Resources */,
+				905EBCA822284EF400A81305 /* EndScene.sks in Resources */,
 				9003BCCB220CDAF400D571C6 /* spaceinvaders1.mpeg in Resources */,
 				90090BF8220A0A35003EF67C /* LaunchScreen.storyboard in Resources */,
 				9003BC8C220B937300D571C6 /* bulletsSound.wav in Resources */,
+				905EBCAA22284F8E00A81305 /* MenuScene.sks in Resources */,
 				90090BF5220A0A35003EF67C /* Assets.xcassets in Resources */,
 				90090BEC220A0A34003EF67C /* Actions.sks in Resources */,
 			);
