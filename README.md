@@ -13,7 +13,7 @@ I start create 3 swift files call : GameScene, MeueScene, and EndScene. As the n
 * Swift 4.0+
 
 ## Features
-* Adding the diffecult levels, so user is able to selected before they start the game
+* Adding Big Boss for user to fight for.
 * Setting up unlock options for the ship, so when they pass one of levels, the new ship will be unlock for they as reward.
 * Able to save the user record. So in this case, its able to save more than one players.
 * Search for the nearby players, and connect by internet to play together
