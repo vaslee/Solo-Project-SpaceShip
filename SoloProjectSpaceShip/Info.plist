@@ -36,7 +36,9 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>PG_Roof Runners.ttf</string>
+		<string>fighting spirit TBS.ttf</string>
+		<string>fruitopia.ttf</string>
+		<string>induction.ttf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

@@ -43,16 +43,15 @@ class EndScene: SKScene {
         addChild(background)
         
         
-        let gameOverLabel = SKLabelNode(fontNamed: "Bold of Roof Runner")
+        let gameOverLabel = SKLabelNode(fontNamed: "fighting spirit TBS")
         gameOverLabel.fontSize = 60
         gameOverLabel.text = "GAME OVER"
         gameOverLabel.fontColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
-        //gameOverLabel.position = CGPoint(x: self.size.width/4, y: frame.midY + gameOverLabel.frame.size.height)
         gameOverLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.7)
         gameOverLabel.zPosition = 10
         addChild(gameOverLabel)
         
-        let scoreLabel = SKLabelNode(fontNamed: "Bold of Roof Runner")
+        let scoreLabel = SKLabelNode(fontNamed: "fighting spirit TBS")
         scoreLabel.fontSize = 35
         scoreLabel.text = "Score: \(countScore)"
         scoreLabel.fontColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
@@ -72,10 +71,10 @@ class EndScene: SKScene {
         
         
         
-        let highestScore = SKLabelNode(fontNamed: "Bold of Roof Runner")
-        highestScore.fontSize = 35
+        let highestScore = SKLabelNode(fontNamed: "fighting spirit TBS")
+        highestScore.fontSize = 40
         highestScore.text = "HighestScore: \(highScoreNum)"
-        highestScore.fontColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        highestScore.fontColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
         highestScore.position = CGPoint(x: self.size.width/2, y: self.size.height*0.6)
         highestScore.zPosition = 10
         addChild(highestScore)
@@ -96,16 +95,7 @@ class EndScene: SKScene {
         menu.zPosition = 10
         addChild(menu)
         
-//        var currentScore = UserDefaults.standard
-//        var countScore = currentScore.value(forKey: "countScore") as! NSInteger
-//
-//
-//        var highScoreDefault = UserDefaults.standard
-//        highScoreDefault.value(forKey: "HighScore") as! NSInteger
-//        highScore.text = "\(highScoreDefault)"
-        
-        
-        
+
    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

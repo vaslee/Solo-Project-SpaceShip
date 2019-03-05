@@ -24,7 +24,9 @@
 		904A095E222DD9A3006840AF /* gameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904A095D222DD9A3006840AF /* gameOver.mp3 */; };
 		905EBCA822284EF400A81305 /* EndScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 905EBCA722284EF400A81305 /* EndScene.sks */; };
 		905EBCAA22284F8E00A81305 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 905EBCA922284F8E00A81305 /* MenuScene.sks */; };
-		90FD8DB82215EF29001EBE1A /* PG_Roof Runners.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90FD8DB72215EF29001EBE1A /* PG_Roof Runners.ttf */; };
+		90FDC3FC222F0F71006C7017 /* fighting spirit TBS.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90FDC3FB222F0F71006C7017 /* fighting spirit TBS.ttf */; };
+		90FDC3FE222F106A006C7017 /* fruitopia.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90FDC3FD222F106A006C7017 /* fruitopia.ttf */; };
+		90FDC400222F10B6006C7017 /* induction.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90FDC3FF222F10B6006C7017 /* induction.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +49,9 @@
 		904A095D222DD9A3006840AF /* gameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOver.mp3; sourceTree = "<group>"; };
 		905EBCA722284EF400A81305 /* EndScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndScene.sks; sourceTree = "<group>"; };
 		905EBCA922284F8E00A81305 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
-		90FD8DB72215EF29001EBE1A /* PG_Roof Runners.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PG_Roof Runners.ttf"; sourceTree = "<group>"; };
+		90FDC3FB222F0F71006C7017 /* fighting spirit TBS.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fighting spirit TBS.ttf"; sourceTree = "<group>"; };
+		90FDC3FD222F106A006C7017 /* fruitopia.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = fruitopia.ttf; sourceTree = "<group>"; };
+		90FDC3FF222F10B6006C7017 /* induction.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = induction.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,22 +89,48 @@
 				90090BE9220A0A34003EF67C /* GameScene.sks */,
 				905EBCA722284EF400A81305 /* EndScene.sks */,
 				90090BEB220A0A34003EF67C /* Actions.sks */,
-				90090BEF220A0A34003EF67C /* GameViewController.swift */,
-				9003BCCE220CE57700D571C6 /* MenuScene.swift */,
-				90090BED220A0A34003EF67C /* GameScene.swift */,
-				9036256A222482F600A5727C /* EndScene.swift */,
 				90090BF1220A0A34003EF67C /* Main.storyboard */,
-				904A095B222DD084006840AF /* gameSound.mp3 */,
-				9003BC8A220B937200D571C6 /* bulletsSound.wav */,
-				904A095D222DD9A3006840AF /* gameOver.mp3 */,
-				9003BCCA220CDAF400D571C6 /* spaceinvaders1.mpeg */,
-				9003BC8B220B937300D571C6 /* explosion.wav */,
-				90FD8DB72215EF29001EBE1A /* PG_Roof Runners.ttf */,
+				90FDC403222F12A4006C7017 /* Scenes */,
+				90FDC402222F1283006C7017 /* Game Sound Files */,
+				90FDC401222F1268006C7017 /* Label Font File */,
 				90090BF4220A0A35003EF67C /* Assets.xcassets */,
 				90090BF6220A0A35003EF67C /* LaunchScreen.storyboard */,
 				90090BF9220A0A35003EF67C /* Info.plist */,
 			);
 			path = SoloProjectSpaceShip;
+			sourceTree = "<group>";
+		};
+		90FDC401222F1268006C7017 /* Label Font File */ = {
+			isa = PBXGroup;
+			children = (
+				90FDC3FF222F10B6006C7017 /* induction.ttf */,
+				90FDC3FD222F106A006C7017 /* fruitopia.ttf */,
+				90FDC3FB222F0F71006C7017 /* fighting spirit TBS.ttf */,
+			);
+			path = "Label Font File";
+			sourceTree = "<group>";
+		};
+		90FDC402222F1283006C7017 /* Game Sound Files */ = {
+			isa = PBXGroup;
+			children = (
+				904A095B222DD084006840AF /* gameSound.mp3 */,
+				9003BC8A220B937200D571C6 /* bulletsSound.wav */,
+				9003BC8B220B937300D571C6 /* explosion.wav */,
+				904A095D222DD9A3006840AF /* gameOver.mp3 */,
+				9003BCCA220CDAF400D571C6 /* spaceinvaders1.mpeg */,
+			);
+			path = "Game Sound Files";
+			sourceTree = "<group>";
+		};
+		90FDC403222F12A4006C7017 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				90090BEF220A0A34003EF67C /* GameViewController.swift */,
+				9003BCCE220CE57700D571C6 /* MenuScene.swift */,
+				90090BED220A0A34003EF67C /* GameScene.swift */,
+				9036256A222482F600A5727C /* EndScene.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,11 +191,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90FDC3FE222F106A006C7017 /* fruitopia.ttf in Resources */,
 				90090BF3220A0A34003EF67C /* Main.storyboard in Resources */,
 				90090BEA220A0A34003EF67C /* GameScene.sks in Resources */,
 				904A095C222DD084006840AF /* gameSound.mp3 in Resources */,
 				9003BC8D220B937300D571C6 /* explosion.wav in Resources */,
-				90FD8DB82215EF29001EBE1A /* PG_Roof Runners.ttf in Resources */,
+				90FDC400222F10B6006C7017 /* induction.ttf in Resources */,
 				904A095E222DD9A3006840AF /* gameOver.mp3 in Resources */,
 				905EBCA822284EF400A81305 /* EndScene.sks in Resources */,
 				9003BCCB220CDAF400D571C6 /* spaceinvaders1.mpeg in Resources */,
@@ -174,6 +205,7 @@
 				905EBCAA22284F8E00A81305 /* MenuScene.sks in Resources */,
 				90090BF5220A0A35003EF67C /* Assets.xcassets in Resources */,
 				90090BEC220A0A34003EF67C /* Actions.sks in Resources */,
+				90FDC3FC222F0F71006C7017 /* fighting spirit TBS.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

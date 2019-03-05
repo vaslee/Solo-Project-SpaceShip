@@ -15,11 +15,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var heart = 3
     var startingSpeed = 0.0
-    var scoreLabel = SKLabelNode(fontNamed: "Bold of Roof Runner")
+    var scoreLabel = SKLabelNode(fontNamed: "fruitopia")
     
     var highScore = Int()
     var timer = Timer()
-    var heartLabel = SKLabelNode(fontNamed: "Bold of Roof Runner")
+    var heartLabel = SKLabelNode(fontNamed: "fruitopia")
     
     let spaceShip = SKSpriteNode(imageNamed: "ship")
     let stopButton = SKSpriteNode(imageNamed: "stop")
@@ -106,7 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(heartLabel)
         
         
-        var highScoreDefault = UserDefaults.standard
+        let highScoreDefault = UserDefaults.standard
         if (highScoreDefault.value(forKey: "HighScore") != nil) {
             highScore = highScoreDefault.value(forKey: "HighScore") as! NSInteger
         } else {
@@ -360,10 +360,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 enemyBullet.setScale(0.2)
                 enemyBullet.position = node.position //子弹射出的地方是和飞船一样的位置
                 enemyBullet.zPosition = 1
-               //enemyBullet.zRotation = 3.5
                 enemyBullet.physicsBody = SKPhysicsBody(rectangleOf: enemyBullet.size)
                 enemyBullet.physicsBody!.affectedByGravity = false
-                //enemyBullet.physicsBody?.isDynamic = false
                 enemyBullet.physicsBody!.categoryBitMask = physicsCaegories.enemyBullet
                 enemyBullet.physicsBody!.collisionBitMask = physicsCaegories.noun
                 enemyBullet.physicsBody!.contactTestBitMask = physicsCaegories.ship | physicsCaegories.bullet

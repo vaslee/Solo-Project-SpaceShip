@@ -26,7 +26,6 @@ class MenuScene: SKScene {
         let maxRatio: CGFloat = 16.0/9.0
         let menuWidth = size.height/maxRatio
         let menuSide = (size.width - menuWidth) / 2
-        //let gameHigh = size.height
         menuSpace = CGRect(x: menuSide, y: 0, width: menuWidth, height: size.height)
         
         
@@ -47,13 +46,18 @@ class MenuScene: SKScene {
         addChild(background)
         
         
-        let welcome = SKLabelNode(fontNamed: "Bold of Roof Runner")
-        welcome.fontSize = 50
-        welcome.text = "Welcome"
-        welcome.fontColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        let welcome = SKLabelNode(fontNamed: "induction")
+        welcome.fontSize = 30
+        welcome.text = "Space Ship"
+        welcome.fontColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
         welcome.position = CGPoint(x: self.size.width/2, y: 400)
         welcome.zPosition = 10
         addChild(welcome)
+        
+        let scaleUp = SKAction.scale(to: 2, duration: 0.5)
+        let scaleDown = SKAction.scale(to: 1, duration: 0.5)
+        let scaleSequence = SKAction.sequence([scaleUp, scaleDown])
+        welcome.run(scaleSequence)
         
         
         startGame.setScale(1)
