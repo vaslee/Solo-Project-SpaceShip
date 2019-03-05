@@ -60,8 +60,9 @@ class EndScene: SKScene {
         scoreLabel.zPosition = 10
         addChild(scoreLabel)
 
-        let defaults = UserDefaults.self
-        var highScoreNum = defaults.value(forKey: "saveHighScore") as! NSInteger
+        let defaults = UserDefaults.standard
+        var highScoreNum = defaults.integer(forKey: "saveHighScore")
+        
         
         if countScore > highScoreNum {
             highScoreNum = countScore

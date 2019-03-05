@@ -13,23 +13,23 @@ var countScore = 0
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    
+    var heart = 3
     var startingSpeed = 0.0
     var scoreLabel = SKLabelNode(fontNamed: "Bold of Roof Runner")
     
     var highScore = Int()
     var timer = Timer()
-    var heart = 3
     var heartLabel = SKLabelNode(fontNamed: "Bold of Roof Runner")
     
     let spaceShip = SKSpriteNode(imageNamed: "ship")
+    let stopButton = SKSpriteNode(imageNamed: "stop")
+    let menuButton = SKSpriteNode(imageNamed: "options")
     
     let bulletSound = SKAction.playSoundFileNamed("bulletsSound.wav", waitForCompletion: false)
     
     let explosionSound = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
     
-    let stopButton = SKSpriteNode(imageNamed: "stop")
-    let menuButton = SKSpriteNode(imageNamed: "options")
+    
     struct physicsCaegories {
         static let noun: UInt32 = 0
         static let ship: UInt32 = 0b1
@@ -45,13 +45,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let maxRatio: CGFloat = 16.0/9.0
         let gameWidth = size.height/maxRatio
         let gameSide = (size.width - gameWidth) / 2
-        //let gameHigh = size.height
         gameSpace = CGRect(x: gameSide, y: 0, width: gameWidth, height: size.height)
         
         
         super.init(size: size)
-        
-       startNewLevel()
+         startNewLevel()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -64,12 +62,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.physicsWorld.contactDelegate = self
         
-        let background = SKSpriteNode(imageNamed: "background1")
-        background.size = self.size
-        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        background.zPosition = 0 //分裂的屏幕页面
-        addChild(background)
-        
+        for i in 0...1 { // 0...1就是会显示俩次
+            let background = SKSpriteNode(imageNamed: "background1")
+            background.size = self.size
+            background.anchorPoint = CGPoint(x: 0.5, y: 0)
+            background.position = CGPoint(x: self.size.width/2, y: self.size.height*CGFloat(i))
+            background.zPosition = 0 //分裂的屏幕页面
+            background.name = "Background"
+            addChild(background)
+        }
        
         spaceShip.setScale(0.2) //change the size of image
         spaceShip.position = CGPoint(x: self.size.width/2, y: self.size.height * 0.13)
@@ -81,9 +82,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceShip.physicsBody!.contactTestBitMask = physicsCaegories.enemy
         addChild(spaceShip)
         
+        
         let backgroundMusic = SKAudioNode(fileNamed: "gameSound.mp3")
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)
+        
         
         scoreLabel.text = "Score: 0"
         scoreLabel.fontSize = 25
@@ -93,6 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.zPosition = 100
         addChild(scoreLabel)
         
+        
         heartLabel.text = "Heart: 3"
         heartLabel.fontSize = 25
         heartLabel.fontColor = SKColor.red
@@ -101,6 +105,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         heartLabel.zPosition = 100
         addChild(heartLabel)
         
+        
         var highScoreDefault = UserDefaults.standard
         if (highScoreDefault.value(forKey: "HighScore") != nil) {
             highScore = highScoreDefault.value(forKey: "HighScore") as! NSInteger
@@ -108,19 +113,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             highScore = 0
         }
         
-        enemyBulletShow()
-        stopPressed()
-        menuPressed()
+            enemyBulletShow()
+            stopPressed()
+            menuPressed()
+        
     }
+    // 背景移动
+    var lastUpdateTime: TimeInterval = 0
+    var deltaFrameTime: TimeInterval = 0
+    var backgroundToMoveBySecond: CGFloat = 200.0 // 页面移动速度
+    // 实时更新背景图
+    override func update(_ currentTime: TimeInterval) {
+        if lastUpdateTime == 0 {
+            lastUpdateTime = currentTime
+        } else {
+            deltaFrameTime = currentTime - lastUpdateTime
+            lastUpdateTime = currentTime
+        }
+        
+        let backgroundToMove = backgroundToMoveBySecond * CGFloat(deltaFrameTime)
+        self.enumerateChildNodes(withName: "Background") { (background, stop) in
+           
+            let gameScene = GameScene(size: self.view!.bounds.size) // 设置只在gamescene的时候移动背景画面
+            if gameScene == gameScene{
+            background.position.y -= backgroundToMove
+            }
+            if background.position.y < -self.size.height { // 当页面向下移动时的y 小于一开始设定的y的值，
+                background.position.y += self.size.height*2 // 那么就*2 这样h就会一直显示
+            }
+        }
+    }
+    
     
     func addScore() {
         countScore += 1
         scoreLabel.text = "Score: \(countScore)"
         
-//        if countScore > highScore {
-//            var highScoreDefault = UserDefaults.standard
-//            highScoreDefault.set(countScore, forKey: "HighScore")
-//        }
     }
     
     func loseLife() {
@@ -149,7 +177,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    func didBegin(_ contact: SKPhysicsContact) {
+    func didBegin(_ contact: SKPhysicsContact) { // 当俩个object相遇时用的code
 
         var firstBody = SKPhysicsBody()
         var secondBody = SKPhysicsBody()
@@ -162,7 +190,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
 
-        if firstBody.categoryBitMask == 0 && secondBody.categoryBitMask == 1 {
+        if firstBody.categoryBitMask == 0 && secondBody.categoryBitMask == 1 { // 0 = 敌军飞船， 1 = 我的飞船
             
             if firstBody.node != nil {
             hitExpolosion(hitPosition: firstBody.node!.position)
@@ -182,7 +210,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
                 }
         
-        if firstBody.categoryBitMask == 0 && secondBody.categoryBitMask == 2 {
+        if firstBody.categoryBitMask == 0 && secondBody.categoryBitMask == 2 { // 0 = 敌军飞船， 2 = 我的子弹值
             
             addScore()
             if secondBody.node != nil {
@@ -195,7 +223,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
            
         }
         
-        if firstBody.categoryBitMask == 1 && secondBody.categoryBitMask == 8 {
+        if firstBody.categoryBitMask == 1 && secondBody.categoryBitMask == 8 { // 1 = 我的飞船， 8 = 敌军子弹值
             if firstBody.node != nil {
                 hitExpolosion(hitPosition: firstBody.node!.position)
             }
@@ -216,7 +244,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         }
         
-        if firstBody.categoryBitMask == 2 && secondBody.categoryBitMask == 8 {
+        if firstBody.categoryBitMask == 2 && secondBody.categoryBitMask == 8 { // 2 = 我的子弹值， 8 = 敌军子弹值
             if firstBody.node != nil {
                 hitExpolosion(hitPosition: firstBody.node!.position)
             }
@@ -247,6 +275,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let explotionSequence = SKAction.sequence([explosionSound,scale, fadeOut, delete])
         explosion.run(explotionSequence)
     }
+    
     func startNewLevel() {
         
         let enemyShow = SKAction.run(enemyShowup)
@@ -277,7 +306,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         let bulletSequce = SKAction.sequence([bulletSound, moveBullet, deleteBullet]) //发射子弹的所有步骤在【】里面排序，code会根据我们的排序进行action
         bullet.run(bulletSequce)
-        
         
     }
     
@@ -312,14 +340,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemy.name = "enemyShip"
         enemy.physicsBody = SKPhysicsBody(rectangleOf: enemy.size)
         enemy.physicsBody!.affectedByGravity = false
-       enemy.physicsBody?.allowsRotation = false
-        //enemy.physicsBody!.categoryBitMask = physicsCaegories.enemy
+        enemy.physicsBody?.allowsRotation = false
         enemy.physicsBody!.categoryBitMask = physicsCaegories.noun
         enemy.physicsBody!.contactTestBitMask = physicsCaegories.ship | physicsCaegories.bullet
         addChild(enemy)
         
-        
     }
+    
     
     func enemyBulletShow() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(shootBullet), userInfo: nil, repeats: true)
