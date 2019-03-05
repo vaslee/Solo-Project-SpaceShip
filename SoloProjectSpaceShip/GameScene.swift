@@ -117,10 +117,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         countScore += 1
         scoreLabel.text = "Score: \(countScore)"
         
-        if countScore > highScore {
-            var highScoreDefault = UserDefaults.standard
-            highScoreDefault.set(countScore, forKey: "HighScore")
-        }
+//        if countScore > highScore {
+//            var highScoreDefault = UserDefaults.standard
+//            highScoreDefault.set(countScore, forKey: "HighScore")
+//        }
     }
     
     func loseLife() {
