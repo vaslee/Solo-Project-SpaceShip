@@ -20,6 +20,8 @@
 		90090BF5220A0A35003EF67C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90090BF4220A0A35003EF67C /* Assets.xcassets */; };
 		90090BF8220A0A35003EF67C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90090BF6220A0A35003EF67C /* LaunchScreen.storyboard */; };
 		9036256B222482F600A5727C /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9036256A222482F600A5727C /* EndScene.swift */; };
+		904A095C222DD084006840AF /* gameSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904A095B222DD084006840AF /* gameSound.mp3 */; };
+		904A095E222DD9A3006840AF /* gameOver.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 904A095D222DD9A3006840AF /* gameOver.mp3 */; };
 		905EBCA822284EF400A81305 /* EndScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 905EBCA722284EF400A81305 /* EndScene.sks */; };
 		905EBCAA22284F8E00A81305 /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 905EBCA922284F8E00A81305 /* MenuScene.sks */; };
 		90FD8DB82215EF29001EBE1A /* PG_Roof Runners.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90FD8DB72215EF29001EBE1A /* PG_Roof Runners.ttf */; };
@@ -41,6 +43,8 @@
 		90090BF7220A0A35003EF67C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		90090BF9220A0A35003EF67C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9036256A222482F600A5727C /* EndScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScene.swift; sourceTree = "<group>"; };
+		904A095B222DD084006840AF /* gameSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameSound.mp3; sourceTree = "<group>"; };
+		904A095D222DD9A3006840AF /* gameOver.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameOver.mp3; sourceTree = "<group>"; };
 		905EBCA722284EF400A81305 /* EndScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndScene.sks; sourceTree = "<group>"; };
 		905EBCA922284F8E00A81305 /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		90FD8DB72215EF29001EBE1A /* PG_Roof Runners.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PG_Roof Runners.ttf"; sourceTree = "<group>"; };
@@ -86,7 +90,9 @@
 				90090BED220A0A34003EF67C /* GameScene.swift */,
 				9036256A222482F600A5727C /* EndScene.swift */,
 				90090BF1220A0A34003EF67C /* Main.storyboard */,
+				904A095B222DD084006840AF /* gameSound.mp3 */,
 				9003BC8A220B937200D571C6 /* bulletsSound.wav */,
+				904A095D222DD9A3006840AF /* gameOver.mp3 */,
 				9003BCCA220CDAF400D571C6 /* spaceinvaders1.mpeg */,
 				9003BC8B220B937300D571C6 /* explosion.wav */,
 				90FD8DB72215EF29001EBE1A /* PG_Roof Runners.ttf */,
@@ -157,8 +163,10 @@
 			files = (
 				90090BF3220A0A34003EF67C /* Main.storyboard in Resources */,
 				90090BEA220A0A34003EF67C /* GameScene.sks in Resources */,
+				904A095C222DD084006840AF /* gameSound.mp3 in Resources */,
 				9003BC8D220B937300D571C6 /* explosion.wav in Resources */,
 				90FD8DB82215EF29001EBE1A /* PG_Roof Runners.ttf in Resources */,
+				904A095E222DD9A3006840AF /* gameOver.mp3 in Resources */,
 				905EBCA822284EF400A81305 /* EndScene.sks in Resources */,
 				9003BCCB220CDAF400D571C6 /* spaceinvaders1.mpeg in Resources */,
 				90090BF8220A0A35003EF67C /* LaunchScreen.storyboard in Resources */,

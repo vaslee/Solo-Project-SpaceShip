@@ -52,21 +52,37 @@ class EndScene: SKScene {
         gameOverLabel.zPosition = 10
         addChild(gameOverLabel)
         
-        let currentScore = SKLabelNode(fontNamed: "Bold of Roof Runner")
-        currentScore.fontSize = 35
-        currentScore.text = "Score: "
-        currentScore.fontColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
-        currentScore.position = CGPoint(x: self.size.width/2, y: self.size.height*0.5)
-        currentScore.zPosition = 10
-        addChild(currentScore)
+        let scoreLabel = SKLabelNode(fontNamed: "Bold of Roof Runner")
+        scoreLabel.fontSize = 35
+        scoreLabel.text = "Score: \(countScore)"
+        scoreLabel.fontColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
+        scoreLabel.position = CGPoint(x: self.size.width/2, y: self.size.height*0.5)
+        scoreLabel.zPosition = 10
+        addChild(scoreLabel)
 
+        let defaults = UserDefaults.self
+        var highScoreNum = defaults.value(forKey: "saveHighScore") as! NSInteger
+        
+        if countScore > highScoreNum {
+            highScoreNum = countScore
+            defaults.setValue(highScoreNum, forKey: "saveHighScore")
+        }
+
+        
+        
+        
         let highestScore = SKLabelNode(fontNamed: "Bold of Roof Runner")
         highestScore.fontSize = 35
-        highestScore.text = "HighestScore: "
+        highestScore.text = "HighestScore: \(highScoreNum)"
         highestScore.fontColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         highestScore.position = CGPoint(x: self.size.width/2, y: self.size.height*0.6)
         highestScore.zPosition = 10
         addChild(highestScore)
+        
+        let backgroundMusic = SKAudioNode(fileNamed: "gameOver.mp3")
+        backgroundMusic.autoplayLooped = true
+        backgroundMusic.run(SKAction.stop())
+        addChild(backgroundMusic)
         
         
         restart.setScale(1)
@@ -86,6 +102,8 @@ class EndScene: SKScene {
 //        var highScoreDefault = UserDefaults.standard
 //        highScoreDefault.value(forKey: "HighScore") as! NSInteger
 //        highScore.text = "\(highScoreDefault)"
+        
+        
         
    }
     

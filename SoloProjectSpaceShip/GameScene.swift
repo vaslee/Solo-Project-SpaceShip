@@ -9,10 +9,11 @@
 import Foundation
 import SpriteKit
 
+var countScore = 0
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var countScore = 0
+    
     var startingSpeed = 0.0
     var scoreLabel = SKLabelNode(fontNamed: "Bold of Roof Runner")
     
@@ -22,11 +23,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var heartLabel = SKLabelNode(fontNamed: "Bold of Roof Runner")
     
     let spaceShip = SKSpriteNode(imageNamed: "ship")
-     let enemy = SKSpriteNode(imageNamed: "enemy")
+    
     let bulletSound = SKAction.playSoundFileNamed("bulletsSound.wav", waitForCompletion: false)
     
     let explosionSound = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
     
+    let stopButton = SKSpriteNode(imageNamed: "stop")
+    let menuButton = SKSpriteNode(imageNamed: "options")
     struct physicsCaegories {
         static let noun: UInt32 = 0
         static let ship: UInt32 = 0b1
@@ -57,6 +60,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
+        countScore = 0
         
         self.physicsWorld.contactDelegate = self
         
@@ -77,7 +81,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spaceShip.physicsBody!.contactTestBitMask = physicsCaegories.enemy
         addChild(spaceShip)
         
-        let backgroundMusic = SKAudioNode(fileNamed: "spaceinvaders1.mpeg")
+        let backgroundMusic = SKAudioNode(fileNamed: "gameSound.mp3")
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)
         
@@ -105,8 +109,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         enemyBulletShow()
-        
-        
+        stopPressed()
+        menuPressed()
     }
     
     func addScore() {
@@ -129,6 +133,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         heartLabel.run(scaleSequence)
     }
     
+    func stopPressed() {
+        stopButton.setScale(1)
+        stopButton.position = CGPoint(x: self.size.width/1.1, y: self.size.height*0.85)
+        stopButton.zPosition = 50
+        addChild(stopButton)
+        
+    }
+    
+    func menuPressed() {
+        menuButton.setScale(1)
+        menuButton.position = CGPoint(x: self.size.width/11, y: self.size.height*0.85)
+        menuButton.zPosition = 50
+        addChild(menuButton)
+        
+    }
     
     func didBegin(_ contact: SKPhysicsContact) {
 
@@ -176,7 +195,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
            
         }
         
-        if firstBody.categoryBitMask == 0 && secondBody.categoryBitMask == 3 {
+        if firstBody.categoryBitMask == 1 && secondBody.categoryBitMask == 8 {
             if firstBody.node != nil {
                 hitExpolosion(hitPosition: firstBody.node!.position)
             }
@@ -196,6 +215,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         
         }
+        
+        if firstBody.categoryBitMask == 2 && secondBody.categoryBitMask == 8 {
+            if firstBody.node != nil {
+                hitExpolosion(hitPosition: firstBody.node!.position)
+            }
+            if secondBody.node != nil {
+                
+                hitExpolosion(hitPosition: secondBody.node!.position)
+            }
+            
+            firstBody.node?.removeFromParent()
+            secondBody.node?.removeFromParent()
+        }
+
     }
     
 
@@ -235,7 +268,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         bullet.physicsBody!.affectedByGravity = false
         bullet.physicsBody!.categoryBitMask = physicsCaegories.bullet
         bullet.physicsBody!.collisionBitMask = physicsCaegories.noun
-        bullet.physicsBody!.contactTestBitMask = physicsCaegories.enemy
+        bullet.physicsBody!.contactTestBitMask = physicsCaegories.enemy | physicsCaegories.enemyBullet
         addChild(bullet)
         
         //let soundAction = SKAction.playSoundFileNamed("bulletsSound.wav", waitForCompletion: true)
@@ -257,7 +290,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func enemyShowup() {
         
-       
+       let enemy = SKSpriteNode(imageNamed: "enemy")
         enemy.setScale(0.3)
         enemy.zPosition = 2
         let minValue = self.size.width / 8
@@ -270,50 +303,73 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         let currentSpeed = startingSpeed - scoreSpeed //用当前速度减去 0.3 之后的新速度产生
         let enemyAction = SKAction.moveTo(y: -70, duration: currentSpeed)
-    
         enemy.run(SKAction.repeatForever(enemyAction))
+        
+        let deleteEnemyBullet = SKAction.removeFromParent()
+        let enemyBulletSequce = SKAction.sequence([bulletSound, enemyAction, deleteEnemyBullet])
+        enemy.run(enemyBulletSequce)
+        
         enemy.name = "enemyShip"
         enemy.physicsBody = SKPhysicsBody(rectangleOf: enemy.size)
         enemy.physicsBody!.affectedByGravity = false
-        enemy.physicsBody!.categoryBitMask = physicsCaegories.enemy
+       enemy.physicsBody?.allowsRotation = false
+        //enemy.physicsBody!.categoryBitMask = physicsCaegories.enemy
         enemy.physicsBody!.categoryBitMask = physicsCaegories.noun
         enemy.physicsBody!.contactTestBitMask = physicsCaegories.ship | physicsCaegories.bullet
         addChild(enemy)
         
+        
     }
     
     func enemyBulletShow() {
-        //timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(shootBullet), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(shootBullet), userInfo: nil, repeats: true)
     }
-    
+
     @objc func shootBullet() {
         for node in self.children {
             if (node.name == "enemyShip") {
-                let enemyBullet = SKSpriteNode(imageNamed: "fire")
-                enemyBullet.setScale(0.15)
+            
+                let enemyBullet = SKSpriteNode(imageNamed: "enemyBullet")
+                enemyBullet.setScale(0.2)
                 enemyBullet.position = node.position //子弹射出的地方是和飞船一样的位置
                 enemyBullet.zPosition = 1
+               //enemyBullet.zRotation = 3.5
                 enemyBullet.physicsBody = SKPhysicsBody(rectangleOf: enemyBullet.size)
                 enemyBullet.physicsBody!.affectedByGravity = false
+                //enemyBullet.physicsBody?.isDynamic = false
                 enemyBullet.physicsBody!.categoryBitMask = physicsCaegories.enemyBullet
                 enemyBullet.physicsBody!.collisionBitMask = physicsCaegories.noun
-                enemyBullet.physicsBody!.contactTestBitMask = physicsCaegories.ship
+                enemyBullet.physicsBody!.contactTestBitMask = physicsCaegories.ship | physicsCaegories.bullet
                 addChild(enemyBullet)
-                
-                
-                let moveBullet = SKAction.moveTo(y: self.size.height + enemyBullet.size.height, duration: 1)
+
+
+                let moveBullet = SKAction.moveTo(y: -self.size.height - enemyBullet.size.height, duration: 2.5)
                 let deleteBullet = SKAction.removeFromParent()
-                
+
                 let bulletSequce = SKAction.sequence([bulletSound, moveBullet, deleteBullet])
                 enemyBullet.run(bulletSequce)
             }
         }
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        fireBullet()
-     
+       fireBullet()
+        for touch in touches {
+            let location = touch.location(in: self)
+            if stopButton.contains(location) {
+                if self.scene?.view?.isPaused == false {
+                    self.scene?.view?.isPaused = true
+                } else {
+                    self.scene?.view?.isPaused = false
+                }
+            }
+            if menuButton.contains(location) {
+                let menuScene = MenuScene(size: view!.bounds.size)
+                view?.presentScene(menuScene)
+            }
+        }
     }
+     
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
@@ -342,6 +398,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 
-    
-    
 }
+    
+
