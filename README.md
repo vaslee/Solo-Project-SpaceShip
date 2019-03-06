@@ -8,6 +8,7 @@ In this game, I set up three scene for this game to run with: GameScene, MeueSce
 
 <img width="408" alt="screen shot 2019-03-06 at 2 58 53 pm" src="https://user-images.githubusercontent.com/43765300/53910172-3e031a80-4021-11e9-8a19-9300618ef412.png">
 
+![spaceshipgame](https://user-images.githubusercontent.com/43765300/53910523-05b00c00-4022-11e9-9671-6816ead61896.gif)
 
 ## Prerequisites
 * Xcode - 9.0+, set up on Swift Language
