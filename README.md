@@ -20,6 +20,10 @@ In this game, I set up three scene for this game to run with: GameScene, MeueSce
 * Also, its able to show the current score for user. 
 * In the end scene, there will be two button - back to menu scene and restart button. 
 
+## Built With
+* SpriteKitc - to get access to call all the game kit
+* ProgrammticUI 
+
 ## Bounds
 * Adding Big Boss for user to fight for.
 * Setting up unlock options for the ship, so when they pass one of levels, the new ship will be unlock for they as reward.
@@ -27,6 +31,3 @@ In this game, I set up three scene for this game to run with: GameScene, MeueSce
 * Search for the nearby players, and connect by internet to play together
 
 
-## Built With
-* SpriteKitc - to get access to call all the game kit
-* ProgrammticUI 
