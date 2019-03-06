@@ -362,6 +362,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 enemyBullet.zPosition = 1
                 enemyBullet.physicsBody = SKPhysicsBody(rectangleOf: enemyBullet.size)
                 enemyBullet.physicsBody!.affectedByGravity = false
+                enemyBullet.physicsBody?.isDynamic = false 
                 enemyBullet.physicsBody!.categoryBitMask = physicsCaegories.enemyBullet
                 enemyBullet.physicsBody!.collisionBitMask = physicsCaegories.noun
                 enemyBullet.physicsBody!.contactTestBitMask = physicsCaegories.ship | physicsCaegories.bullet

@@ -51,6 +51,11 @@ class EndScene: SKScene {
         gameOverLabel.zPosition = 10
         addChild(gameOverLabel)
         
+        let scaleUp = SKAction.scale(to: 2, duration: 0.5)
+        let scaleDown = SKAction.scale(to: 1, duration: 0.5)
+        let scaleSequence = SKAction.sequence([scaleUp, scaleDown])
+        gameOverLabel.run(scaleSequence)
+        
         let scoreLabel = SKLabelNode(fontNamed: "fighting spirit TBS")
         scoreLabel.fontSize = 35
         scoreLabel.text = "Score: \(countScore)"
@@ -103,7 +108,6 @@ class EndScene: SKScene {
             let location = touch.location(in: self)
             if restart.contains(location) {
 
-                print("hi")
                 let gameScene = GameScene(size: view!.bounds.size)
                 gameScene.startingSpeed = currentSpeed
                 view?.presentScene(gameScene)
