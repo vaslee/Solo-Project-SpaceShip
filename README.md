@@ -15,7 +15,7 @@ In this game, I set up three scene for this game to run with: GameScene, MeueSce
 * iOS 8.0+ / Mac OS X 10.11+ / tvOS 9.0+
 * Swift 4.0+
 
-## Feture
+## Feature
 * Make a "SpaceShip" with animation.
 * Player able to choose the diffculty for the level of game to start with.
 * Able to count for the score and health.
@@ -33,7 +33,7 @@ In this game, I set up three scene for this game to run with: GameScene, MeueSce
 * SpriteKitc - to get access to call all the game kit
 * ProgrammticUI 
 
-## Bounds
+## Bonus
 * Adding Big Boss for user to fight for.
 * Setting up unlock options for the ship, so when they pass one of levels, the new ship will be unlock for they as reward.
 * Able to save the user record. So in this case, its able to save more than one players.
