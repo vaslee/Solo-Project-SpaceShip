@@ -13,7 +13,7 @@ var countScore = 0
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var heart = 3
+    //var heart = 3
     var startingSpeed = 0.0
     var scoreLabel = SKLabelNode(fontNamed: "fruitopia")
     
@@ -29,6 +29,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let explosionSound = SKAction.playSoundFileNamed("explosion.wav", waitForCompletion: false)
     
+    var heartArray = [SKSpriteNode]()
     
     struct physicsCaegories {
         static let noun: UInt32 = 0
@@ -96,14 +97,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.zPosition = 100
         addChild(scoreLabel)
         
-        
-        heartLabel.text = "Heart: 3"
-        heartLabel.fontSize = 25
-        heartLabel.fontColor = SKColor.red
-        heartLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.right
-        heartLabel.position = CGPoint(x: self.size.width*0.95, y: self.size.height*0.95 )
-        heartLabel.zPosition = 100
-        addChild(heartLabel)
+        liveLabel()
+//        heartLabel.text = "Heart: 3"
+//        heartLabel.fontSize = 25
+//        heartLabel.fontColor = SKColor.red
+//        heartLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.right
+//        heartLabel.position = CGPoint(x: self.size.width*0.95, y: self.size.height*0.95 )
+//        heartLabel.zPosition = 100
+//        addChild(heartLabel)
         
         
         let highScoreDefault = UserDefaults.standard
@@ -118,6 +119,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             menuPressed()
         
     }
+    
+    func liveLabel() {
+        for live in 1...3 {
+            let liveImage = SKSpriteNode(imageNamed: "ship")
+            liveImage.setScale(0.1)
+            liveImage.position = CGPoint(x: self.frame.size.width - CGFloat(4-live) * liveImage.size.width, y: self.size.height*0.95)
+            addChild(liveImage)
+            heartArray.append(liveImage)
+        }
+    }
+    
+    
     // 背景移动
     var lastUpdateTime: TimeInterval = 0
     var deltaFrameTime: TimeInterval = 0
@@ -152,13 +165,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func loseLife() {
-        heart -= 1
-        heartLabel.text = "Heart: \(heart)"
+      
         
-        let scaleUp = SKAction.scale(to: 1.5, duration: 0.2)
-        let scaleDown = SKAction.scale(to: 1, duration: 0.2)
-        let scaleSequence = SKAction.sequence([scaleUp, scaleDown])
-        heartLabel.run(scaleSequence)
+        if !heartArray.isEmpty{
+            let liveImage = heartArray.first
+            liveImage!.removeFromParent()
+            heartArray.removeFirst()
+        
+            let scaleUp = SKAction.scale(to: 2, duration: 0.2)
+            let scaleDown = SKAction.scale(to: 1, duration: 0.2)
+            let scaleSequence = SKAction.sequence([scaleUp, scaleDown])
+            liveImage!.run(scaleSequence)
+        }
+        if heartArray.isEmpty {
+            gameOver()
+        }
+        
+        
+//        let scaleUp = SKAction.scale(to: 1.5, duration: 0.2)
+//        let scaleDown = SKAction.scale(to: 1, duration: 0.2)
+//        let scaleSequence = SKAction.sequence([scaleUp, scaleDown])
+//        heartLabel.run(scaleSequence)
     }
     
     func stopPressed() {
@@ -203,9 +230,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
            
             firstBody.node?.removeFromParent()
             secondBody.node?.removeFromParent()
-            if heart > 0 {
+            if heartArray.count > 0 {
                 addChild(spaceShip)
-            } else if heart == 0 {
+            }
+            if heartArray.isEmpty {
                 gameOver()
             }
                 }
@@ -236,11 +264,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             firstBody.node?.removeFromParent()
             secondBody.node?.removeFromParent()
-            if heart > 0 {
+            if heartArray.count > 0 {
                 addChild(spaceShip)
-            } else if heart == 0 {
+            }
+            if heartArray.isEmpty {
                 gameOver()
             }
+            
+//            if heart > 0 {
+//                addChild(spaceShip)
+//            } else if heart == 0 {
+//                gameOver()
+//            }
         
         }
         
@@ -324,7 +359,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let minValue = self.size.width / 8
         let maxValue = self.size.width + 45
         let enemyPoint = UInt32(maxValue - minValue)
-        enemy.position = CGPoint(x: CGFloat(arc4random_uniform(enemyPoint)), y: self.size.height)
+        //enemy.position = CGPoint(x: CGFloat(arc4random_uniform(enemyPoint)), y: self.size.height)
+        enemy.position = CGPoint(x: CGFloat(arc4random_uniform(enemyPoint)), y: frame.size.height)
         var scoreSpeed = Double()
         if (countScore%15 == 0) { // 每得分15 速度增加0.3
             scoreSpeed = Double(countScore) / 15.0 * 0.3
@@ -356,8 +392,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for node in self.children {
             if (node.name == "enemyShip") {
             
-                let enemyBullet = SKSpriteNode(imageNamed: "enemyBullet")
-                enemyBullet.setScale(0.2)
+                let enemyBullet = SKSpriteNode(imageNamed: "enemyBullet-1")
+                enemyBullet.setScale(0.3)
                 enemyBullet.position = node.position //子弹射出的地方是和飞船一样的位置
                 enemyBullet.zPosition = 1
                 enemyBullet.physicsBody = SKPhysicsBody(rectangleOf: enemyBullet.size)
